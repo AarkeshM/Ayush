@@ -16,7 +16,7 @@ import {
   Wind,
   Droplets,
   ShieldCheck as SuccessIcon,
-  ArrowLeft, // Added for the back button
+  ArrowLeft,
 } from "lucide-react";
 
 const roles = [
@@ -27,9 +27,9 @@ const roles = [
 
 // Hardcoded credentials for login
 const credentials = {
-  patient: { email: "patient@ayush.com", password: "patient123" },
-  doctor: { email: "doctor@ayush.com", password: "doctor123" },
-  admin: { email: "admin@ayush.com", password: "admin123" },
+    patient: { email: "patient@pkcare.com", password: "patient123" },
+    doctor: { email: "doctor@pkcare.com", password: "doctor123" },
+    admin: { email: "admin@pkcare.com", password: "admin123" },
 }
 
 export default function AuthPage() {
@@ -40,27 +40,22 @@ export default function AuthPage() {
       <div className="w-full max-w-4xl min-h-[650px] md:h-[650px] bg-white rounded-2xl shadow-2xl flex flex-col md:flex-row overflow-hidden relative">
         {/* Back to Home button for mobile view */}
         <Link to="/" className="md:hidden absolute top-4 left-4 z-10 p-2 bg-stone-100 rounded-full text-stone-600 hover:bg-stone-200">
-          <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-5 h-5" />
         </Link>
-
+        
         {/* Left Panel - Branding & Info */}
         <div className="hidden md:flex flex-col w-full md:w-1/2 p-10 bg-gradient-to-br from-amber-50 to-orange-100 text-stone-700">
           <Link to="/" className="text-2xl font-bold font-serif text-stone-800 flex items-center gap-2 z-10">
-            <Leaf className="text-amber-700" />
-
+            <Leaf className="text-amber-700"/>
             PanchakarmaCare
-
           </Link>
-
-          <p className="mt-4 text-stone-600">
-
-            Balancing mind, body, and spirit through the ancient wisdom of Ayurveda.
-
+          <p className="mt-4 text-stone-600 z-10">
+             Balancing mind, body, and spirit through the ancient wisdom of Ayurveda.
           </p>
           <div className="flex-grow flex flex-col items-center justify-center gap-8 -mt-10">
-            <Sun className="w-20 h-20 text-amber-200" />
-            <Droplets className="w-20 h-20 text-amber-200" />
-            <Wind className="w-20 h-20 text-amber-200" />
+              <Sun className="w-20 h-20 text-amber-200" />
+              <Droplets className="w-20 h-20 text-amber-200" />
+              <Wind className="w-20 h-20 text-amber-200" />
           </div>
           <p className="text-center text-sm italic text-stone-500 z-10">
             "Health is a state of complete harmony of the body, mind and spirit."
@@ -68,9 +63,9 @@ export default function AuthPage() {
         </div>
 
         {/* Right Panel - Form */}
-        <div className="w-full md:w-1/2 p-8 md:p-10 flex flex-col justify-center relative overflow-y-auto">
+        <div className="w-full md:w-1/2 p-8 pt-16 md:p-10 flex flex-col justify-center relative overflow-y-auto">
           {/* Back to Home button for desktop view */}
-          <Link to="/" className="hidden md:block absolute top-6 left-6 z-10 p-2 text-stone-500 hover:text-stone-800">
+           <Link to="/" className="hidden md:block absolute top-6 left-6 z-10 p-2 text-stone-500 hover:text-stone-800">
             <ArrowLeft className="w-6 h-6" />
           </Link>
 
@@ -107,11 +102,11 @@ function LoginForm({ setIsLoginView }) {
 
     const expectedCreds = credentials[selectedRole];
     if (email === expectedCreds.email && password === expectedCreds.password) {
-      if (selectedRole === "admin") navigate("/admin");
-      else if (selectedRole === "doctor") navigate("/doctor");
-      else navigate("/patient");
+        if (selectedRole === "admin") navigate("/admin");
+        else if (selectedRole === "doctor") navigate("/doctor");
+        else navigate("/patient");
     } else {
-      setError("Invalid credentials for selected role.");
+        setError("Invalid credentials for selected role.");
     }
   };
 
@@ -153,25 +148,25 @@ function LoginForm({ setIsLoginView }) {
 }
 
 function RegisterForm({ setIsLoginView }) {
-  const [showPassword, setShowPassword] = useState(false);
-  const [success, setSuccess] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [success, setSuccess] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Registering new user...");
-    setSuccess(true);
-    setTimeout(() => { setIsLoginView(true); }, 2000);
-  }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Registering new user...");
+        setSuccess(true);
+        setTimeout(() => { setIsLoginView(true); }, 2000);
+    }
 
-  if (success) {
-    return (
-      <motion.div variants={formVariants} initial="initial" animate="animate" exit="exit" className="text-center">
-        <SuccessIcon className="w-16 h-16 text-green-500 mx-auto mb-4" />
-        <h2 className="text-2xl font-bold font-serif text-stone-800">Registration Successful!</h2>
-        <p className="text-stone-500 mt-2">You can now log in with your new account.</p>
-      </motion.div>
-    )
-  }
+    if(success) {
+        return (
+            <motion.div variants={formVariants} initial="initial" animate="animate" exit="exit" className="text-center">
+                <SuccessIcon className="w-16 h-16 text-green-500 mx-auto mb-4"/>
+                <h2 className="text-2xl font-bold font-serif text-stone-800">Registration Successful!</h2>
+                <p className="text-stone-500 mt-2">You can now log in with your new account.</p>
+            </motion.div>
+        )
+    }
 
   return (
     <motion.div variants={formVariants} initial="initial" animate="animate" exit="exit">
@@ -209,3 +204,4 @@ function InputWithIcon({ icon, type, placeholder, required, hasToggle, onToggle,
     </div>
   );
 }
+
