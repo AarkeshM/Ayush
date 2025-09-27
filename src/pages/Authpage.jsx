@@ -27,9 +27,9 @@ const roles = [
 
 // Hardcoded credentials for login
 const credentials = {
-    patient: { email: "patient@pkcare.com", password: "patient123" },
-    doctor: { email: "doctor@pkcare.com", password: "doctor123" },
-    admin: { email: "admin@pkcare.com", password: "admin123" },
+    patient: { email: "patient@ayush.com", password: "patient123" },
+    doctor: { email: "doctor@ayush.com", password: "doctor123" },
+    admin: { email: "admin@ayush.com", password: "admin123" },
 }
 
 export default function AuthPage() {
